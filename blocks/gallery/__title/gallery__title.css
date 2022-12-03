@@ -1,0 +1,18 @@
+.gallery__title {
+  max-width: 180px;
+  margin: 0;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1023px) {
+  .gallery__title {
+    max-width: 145px;
+    font-size: 22px;
+  }
+}

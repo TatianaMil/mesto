@@ -1,0 +1,9 @@
+.gallery__text-block {
+  min-height: 79px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 30px;
+  padding-left: 21px;
+}
