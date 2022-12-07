@@ -8,6 +8,12 @@
   border: 2px solid #FFFFFF;
   border-radius: 2px;
   align-self: center;
+  cursor: pointer;
+}
+
+.profile__button-plus:hover {
+  opacity: .6;
+  transition: .7s all;
 }
 
 @media screen and (max-width:767px) {

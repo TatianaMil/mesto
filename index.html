@@ -22,22 +22,15 @@
         <section class="profile">
           <div class="profile__item">
             <img src="images/avatar-min.jpg" alt="изображение владельца профиля" class="profile__img">
-
             <div class="profile__form">
-
               <div class="profile__text">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
                 <p class="profile__info"> Исследователь океана</p>
               </div>
-              <button  class="profile__popap">
-                <img src="images/popap.svg" class="profile__popap-img" alt="кнопка для открытия формы редактирования">
+              <button  class="profile__popup">
+                <img src="images/popup.svg" class="profile__popup-img" alt="кнопка для открытия формы редактирования">
               </button>
-
             </div>
-
-
-
-
           </div>
           <button class="profile__button-plus"></button>
         </section>
@@ -56,7 +49,7 @@
             <img src="./images/elbrus-min.jpg" alt="гора эльбрус" class="gallery__img">
             <div class="gallery__text-block">
               <h2 class="gallery__title">Гора Эльбрус</h2>
-              <div class="gallery__heart"></div>
+              <div class="gallery__heart gallery__heart_active"></div>
             </div>
           </div>
 
@@ -100,9 +93,50 @@
         <p class="footer__descr">© 2020 Mesto Russia</p>
       </footer>
 
+      <div class="popup popup_opened">
+        <div class="popup__container">
+          <button class="popup__button-close">&times;</button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+
+          <form action="" class="popup__form">
+            <input
+            name="name"
+            placeholder="Ваше имя"
+            value=""
+            minlength="5"
+            maxlength="20"
+            type="text"
+            class="popup__input popup__input-name">
+
+            <input
+              type="text"
+              placeholder="О вас"
+              value=""
+              minlength="5"
+              maxlength="20"
+              class="popup__input popup__input-about">
+            <button type="submit" class="popup__button-submit">Сохранить</button>
+          </form>
+        </div>
+
+      </div>
+
     </div>
   </div>
 
   <script src="js/index.js"></script>
 </body>
 </html>
+
+
+
+<!-- <div class="modal" id="consultation">
+  <div class="modal__close">&times;</div>
+  <div class="modal__subtitle">Просто заполните форму заявки</div>
+  <div class="modal__descr">и мы перезвоним вам в течении 10 минут</div>
+  <form class="feed-form feed-form_mt25" action="#">
+    <input name="name" placeholder="Ваше имя" type="text">
+    <input name="phone" placeholder="Ваш телефон">
+    <button class="button button_submit">заказать консультацию</button>
+  </form>
+</div> -->

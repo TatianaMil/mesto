@@ -5,4 +5,10 @@
   background-repeat: no-repeat;
   background-size: 22px 19px;
   background-color: #fff;
+  cursor: pointer;
+  transition: .7s all;
+}
+
+.gallery__heart:hover {
+  opacity: .6;
 }

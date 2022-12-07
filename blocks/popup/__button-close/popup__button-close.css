@@ -1,0 +1,25 @@
+.popup__button-close {
+  position: absolute;
+  max-width: 32px;
+  max-height: 32px;
+  top: -40px;
+  right: -40px;
+  background-color: rgba(0, 0, 0, .5);
+  color: #fff;
+  border: 0;
+  font-size: 49px;
+  padding: 0;
+  line-height: 32px;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__button-close {
+    max-width: 20px;
+    max-height: 20px;
+    top: -39px;
+    right: 0;
+    font-size: 36px;
+    line-height: 32px;
+  }
+}

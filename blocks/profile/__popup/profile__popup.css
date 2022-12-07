@@ -1,4 +1,4 @@
-.profile__popap {
+.profile__popup {
   margin: 0;
   padding: 0;
   background-color: black;
@@ -6,10 +6,17 @@
   max-width: 24px;
   max-height: 24px;
   margin-top: 33px;
+  cursor: pointer;
+
+}
+
+.profile__popup:hover {
+  opacity: .6;
+  transition: .7s all;
 }
 
 @media screen and (max-width: 767px) {
-  .profile__popap {
+  .profile__popup {
     max-width: 18px;
     max-height: 18px;
   }
