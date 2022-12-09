@@ -8,7 +8,12 @@
   text-align: center;
   margin-top: 50px;
   border: 0;
+  border-radius: 2px;
   cursor: pointer;
+}
+
+.popup__button-submit:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 767px) {
