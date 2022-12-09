@@ -1,6 +1,5 @@
 .popup__input {
   padding: 0;
-  min-height: 50px;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -9,10 +8,14 @@
   border-top: 0;
   border-right: 0;
   border-left: 0;
+  margin-bottom: 31px;
 }
 
-@media screen and(max-width: 767px) {
-  .popup__input {
-    max-width: 328px;
-  }
+.popup__input:nth-last-child(2) {
+  margin-bottom: 0;
 }
+
+/* @media screen and(max-width: 767px) {
+  .popup__input {
+  }
+} */

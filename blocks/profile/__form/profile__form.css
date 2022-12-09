@@ -5,7 +5,6 @@
 
 @media screen and (max-width:767px) {
   .profile__form {
-    display: flex;
     gap: 10px;
     margin-top: 4px;
   }

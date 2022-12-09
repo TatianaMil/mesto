@@ -8,6 +8,8 @@ const popupClose = document.querySelector('.popup__button-close');
 
 profileButton.addEventListener('click', function() {
   popup.classList.add('popup_opened');
+  nameInput.value = ('Жак-Ив Кусто')
+  aboutInput.value = ('Исследователь океана')
 });
 
 popupClose.addEventListener('click', function() {
