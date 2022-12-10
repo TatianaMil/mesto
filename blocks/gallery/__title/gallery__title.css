@@ -8,13 +8,5 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  /* margin-top: 25px;
-  margin-bottom: 31px; */
 }
 
-@media screen and (max-width: 1023px) {
-  .gallery__title {
-    max-width: 145px;
-    font-size: 22px;
-  }
-}

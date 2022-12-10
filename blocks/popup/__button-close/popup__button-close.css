@@ -1,16 +1,18 @@
 .popup__button-close {
   position: absolute;
-  max-width: 32px;
-  max-height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   top: -40px;
   right: -40px;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url(../../../images/close_icon.svg);
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  background-position: center;
   color: #fff;
   border: 0;
-  font-size: 49px;
   padding: 0;
-  line-height: 32px;
-  text-align: center;
+  /* text-align: center; */
   cursor: pointer;
 }
 
@@ -23,9 +25,8 @@
   .popup__button-close {
     max-width: 20px;
     max-height: 20px;
-    top: -39px;
-    right: 0;
-    font-size: 36px;
-    line-height: 32px;
+    background-size: 20px 20px;
+    top: -42px;
+    right: -5px;
   }
 }
