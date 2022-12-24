@@ -43,15 +43,12 @@ const popupImgLink = document.querySelector('.popup__input_form_img-link');
 const popupImg = document.querySelector('.popup__img');
 const popupTitleImg = document.querySelector('.popup__title-img');
 const popupCardImg = document.querySelector('.popup_type_img');
-const popupPlasePluse = document.querySelector('.popup_plase_pluse');
-const popupBtnClosePlasePluse = document.querySelector('.popup__button-close_plase_pluse');
-const popupBtnSubmitPlasePluse  = document.querySelector('.popup__button-submit_plase_pluse');
+const popupPlacePluse = document.querySelector('.popup_place_pluse');
+const popupBtnClosePlacePluse = document.querySelector('.popup__button-close_place_pluse');
+const popupBtnSubmitPlacePluse  = document.querySelector('.popup__button-submit_place_pluse');
 const galleryTitle = document.querySelector('.gallery__title');
 const galleryImg = document.querySelector('.gallery__imggallery__img');
-
-
-
-const popupFormPlasePluse = document.querySelector('.popup__form_plase_pluse');
+const popupFormPlacePluse = document.querySelector('.popup__form_place_pluse');
 
 const initialCards = [
   {
@@ -82,10 +79,10 @@ const initialCards = [
 
 //открытие и закрытие попапа по нажатию на плюс
 buttonPlus.addEventListener('click', () => {
-  popupPlasePluse.classList.add('popup_opened');
+  popupPlacePluse.classList.add('popup_opened');
 });
-popupBtnClosePlasePluse.addEventListener('click', () => {
-  popupPlasePluse.classList.remove('popup_opened');
+popupBtnClosePlacePluse.addEventListener('click', () => {
+  popupPlacePluse.classList.remove('popup_opened');
 });
 // создание новой карточки
 const galleryContainer = document.querySelector('.gallery');
@@ -115,13 +112,11 @@ initialCards.forEach ((element) => {
 
 const addCartSubmit = (evt) => {
   evt.prevenrDefault();
-  // galleryTitle.textContent = popupTitleImg.value;
-  // galleryImg.classList.src = popupImg.value;
-  renderCart(popupTitleImg.value, popupImg.value);
-  popupPlasePluse.classList.remove('.popup__form_plase_pluse');
+  renderCart(popupImgName.value, popupImgLink.value);
+  popupPlacePluse.classList.remove('.popup__form_place_pluse');
 }
 
-popupBtnSubmitPlasePluse.addEventListener('submit', addCartSubmit);
+popupFormPlacePluse.addEventListener('submit', addCartSubmit);
 
 
 
