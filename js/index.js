@@ -92,7 +92,7 @@ const galleryContainer = document.querySelector('.gallery');
 const template = document.querySelector('#template-new-img');
 
 const createNewCard = (name, link) => {
-  console.log(createNewCard(name, link))
+  console.log(name, link);
   const newCard = template.content.querySelector('.gallery__item').cloneNode(true);
   newCard.querySelector('.gallery__title').textContent = name;
   newCard.querySelector('.gallery__img').src = link;
