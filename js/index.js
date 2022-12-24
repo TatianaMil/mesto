@@ -89,15 +89,12 @@ const galleryContainer = document.querySelector('.gallery');
 const template = document.querySelector('#template-new-img');
 
 const createNewCard = (name, link) => {
-  console.log(name, link);
+  // console.log(name, link);
   const newCard = template.content.querySelector('.gallery__item').cloneNode(true);
   newCard.querySelector('.gallery__title').textContent = name;
   newCard.querySelector('.gallery__img').src = link;
   newCard.querySelector('.gallery__img').alt = name;
-
-
   return newCard;
-
 };
 
 //добавление карточки
@@ -111,9 +108,11 @@ initialCards.forEach ((element) => {
 });
 
 const addCartSubmit = (evt) => {
-  evt.prevenrDefault();
+  evt.preventDefault();
   renderCart(popupImgName.value, popupImgLink.value);
   popupPlacePluse.classList.remove('.popup__form_place_pluse');
+  popupPlacePluse.classList.remove('popup_opened');
+  popupFormPlacePluse.reset();
 }
 
 popupFormPlacePluse.addEventListener('submit', addCartSubmit);
