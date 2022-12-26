@@ -93,8 +93,8 @@ const handleLikeClick = (evt) => {
 //большая картинка
 const openBigImg = (img, title) => {
     popupCardImg.classList.add('popup_opened');
-    popupImg.src = img.src
-    popupImg.alt = img.title
+    popupImg.src = img;
+    popupImg.alt = title;
     popupTitleImg.textContent = title;
 };
 
@@ -121,8 +121,8 @@ const createNewCard = (name, link) => {
   });
 
   //большая картинка
-  newCard.querySelector('.popup__img').addEventListener('click', () => {
-    openBigImg(img, title);
+  newCard.querySelector('.gallery__img').addEventListener('click', () => {
+    openBigImg(name, link);
   });
 
   return newCard;
