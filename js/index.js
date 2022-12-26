@@ -1,11 +1,6 @@
-// .profile__button = profileButton
-// .popup
-// .popup__button-close
-
 const profileButton = document.querySelector('.profile__button');
 const popup = document.querySelector('.popup');
 const popupClose = document.querySelector('.popup__button-close');
-
 let formElement = document.querySelector('.popup__form');
 let nameInput = document.querySelector('.popup__input_form_name');
 let aboutInput = document.querySelector('.popup__input_form_about');
@@ -34,8 +29,6 @@ function handleFormSubmit(evt) {
 
 formElement.addEventListener('submit', handleFormSubmit);
 
-//5 спринт
-
 //5sprint объявили переменные для добавления в кнопку плюс
 const buttonPlus = document.querySelector('.profile__button-plus');
 const popupImgName = document.querySelector('.popup__input_form_img-name');
@@ -47,7 +40,7 @@ const popupPlacePluse = document.querySelector('.popup_place_pluse');
 const popupBtnClosePlacePluse = document.querySelector('.popup__button-close_place_pluse');
 const popupBtnSubmitPlacePluse  = document.querySelector('.popup__button-submit_place_pluse');
 const galleryTitle = document.querySelector('.gallery__title');
-const galleryImg = document.querySelector('.gallery__imggallery__img');
+
 const popupFormPlacePluse = document.querySelector('.popup__form_place_pluse');
 
 const initialCards = [
@@ -84,49 +77,73 @@ buttonPlus.addEventListener('click', () => {
 popupBtnClosePlacePluse.addEventListener('click', () => {
   popupPlacePluse.classList.remove('popup_opened');
 });
+
+//добавление и удаление лайка
+const handleLikeClick = (evt) => {
+  evt.target.classList.toggle('gallery__heart_active');
+};
+
+// //открытие большой картинки по клику на изображение
+// const openBigImg = galleryImg.addEventListener('click', () => {
+//   popupCardImg.classList.add('popup_opened');
+//   popupImg.value = galleryImg.src;
+//   // popupImg.value = galleryImg.alt;
+//   popupTitleImg.value = galleryTitle.textContent;
+// });
+//большая картинка
+const openBigImg = (img, title) => {
+    popupCardImg.classList.add('popup_opened');
+    popupImg.src = img.src
+    popupImg.alt = img.title
+    popupTitleImg.textContent = title;
+};
+
 // создание новой карточки
 const galleryContainer = document.querySelector('.gallery');
 const template = document.querySelector('#template-new-img');
+//для открытия картинки
 
 const createNewCard = (name, link) => {
-  // console.log(name, link);
   const newCard = template.content.querySelector('.gallery__item').cloneNode(true);
+  const galleryImg = document.querySelector('.gallery__img');
+
   newCard.querySelector('.gallery__title').textContent = name;
   newCard.querySelector('.gallery__img').src = link;
   newCard.querySelector('.gallery__img').alt = name;
+
+  //для добавления лайка
+  newCard.querySelector('.gallery__heart').addEventListener('click', handleLikeClick);
+
+  //для удаления карточки по нажатию на корзину
+  const deleteCard = newCard.querySelector(".gallery__del")
+  deleteCard.addEventListener("click", () => {
+  newCard.remove();
+  });
+
+  //большая картинка
+  newCard.querySelector('.popup__img').addEventListener('click', () => {
+    openBigImg(img, title);
+  });
+
   return newCard;
 };
 
 //добавление карточки
-const renderCart = (name, link) => {
+const renderCard = (name, link) => {
   galleryContainer.prepend(createNewCard(name, link));
 };
 
 // вставляем карточки из массива
 initialCards.forEach ((element) => {
-  renderCart(element.name, element.link);
+  renderCard(element.name, element.link);
 });
 
-const addCartSubmit = (evt) => {
+//добавление своей карточки в галерею
+const addCardSubmit = (evt) => {
   evt.preventDefault();
-  renderCart(popupImgName.value, popupImgLink.value);
+  renderCard(popupImgName.value, popupImgLink.value);
   popupPlacePluse.classList.remove('.popup__form_place_pluse');
   popupPlacePluse.classList.remove('popup_opened');
   popupFormPlacePluse.reset();
 }
-
-popupFormPlacePluse.addEventListener('submit', addCartSubmit);
-
-
-
-
-
-
-
-
-
-//добавление своих картинок
-//лайки
-//открытие и закрытие плюса
-//открытие большой картинки по клику на изображение
-//удалениепо нажатию на урну
+popupFormPlacePluse.addEventListener('submit', addCardSubmit);

@@ -22,6 +22,7 @@
 @import url(../blocks/gallery/__text-block/gallery__text-block.css);
 @import url(../blocks/gallery/__title/gallery__title.css);
 @import url(../blocks/gallery/__heart/gallery__heart.css);
+@import url(../blocks/gallery/__heart/_active/gallery__heart_active.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__descr/footer__descr.css);
 @import url(../blocks/popup/popup.css);
