@@ -6,6 +6,10 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  display: none;
+  /* display: none; */
   background-color: rgba(0, 0, 0, .5);
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 1s visibility 1s z-index 1s;
 }
