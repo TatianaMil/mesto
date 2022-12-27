@@ -34,74 +34,7 @@
           <button type="button" class="profile__button-plus"></button>
         </section>
 
-        <section class="gallery">
-          <!-- <article class="gallery__item">
-            <div class="gallery__img-block">
-              <img src="./images/carachaevo-min.jpg" alt="карачаевск" class="gallery__img">
-              <button type="button" class="gallery__del"></button>
-            </div>
-            <div class="gallery__text-block">
-              <h2 class="gallery__title">Карачаевск</h2>
-              <button type="button" class="gallery__heart"></button>
-            </div>
-          </article>
-
-          <article class="gallery__item">
-            <div class="gallery__img-block">
-              <img src="./images/elbrus-min.jpg" alt="Гора Эльбрус" class="gallery__img">
-              <button type="button" class="gallery__del"></button>
-            </div>
-            <div class="gallery__text-block">
-              <h2 class="gallery__title">Гора Эльбрус</h2>
-              <button type="button" class="gallery__heart"></button>
-            </div>
-          </article>
-
-          <article class="gallery__item">
-            <div class="gallery__img-block">
-              <img src="./images/dombay-min.jpg" alt="Домбай" class="gallery__img">
-              <button type="button" class="gallery__del"></button>
-            </div>
-            <div class="gallery__text-block">
-              <h2 class="gallery__title">Домбай</h2>
-              <button type="button" class="gallery__heart"></button>
-            </div>
-          </article>
-
-          <article class="gallery__item">
-            <div class="gallery__img-block">
-              <img src="./images/elbrus-min.jpg" alt="Гора Эльбрус" class="gallery__img">
-              <button type="button" class="gallery__del"></button>
-            </div>
-            <div class="gallery__text-block">
-              <h2 class="gallery__title">Гора Эльбрус</h2>
-              <button type="button" class="gallery__heart"></button>
-            </div>
-          </article>
-
-          <article class="gallery__item">
-            <div class="gallery__img-block">
-              <img src="./images/dombay-min.jpg" alt="Домбай" class="gallery__img">
-              <button type="button" class="gallery__del"></button>
-            </div>
-            <div class="gallery__text-block">
-              <h2 class="gallery__title">Домбай</h2>
-              <button type="button" class="gallery__heart"></button>
-            </div>
-          </article>
-
-          <article class="gallery__item">
-            <div class="gallery__img-block">
-              <img src="./images/carachaevo-min.jpg" alt="Карачаево" class="gallery__img">
-              <button type="button" class="gallery__del"></button>
-            </div>
-            <div class="gallery__text-block">
-              <h2 class="gallery__title">Карачаево-Черкеск</h2>
-              <button type="button" class="gallery__heart"></button>
-            </div>
-          </article> -->
-
-        </section>
+        <section class="gallery"></section>
 
       </main>
 
@@ -116,48 +49,50 @@
           <h2 class="popup__title">Редактировать профиль</h2>
           <form name="form_name" class="popup__form">
             <input
-            name="name"
-            placeholder="Ваше имя"
-            value=""
-            minlength="5"
-            maxlength="20"
-            type="text"
-            class="popup__input popup__input_form_name">
+              name="name"
+              placeholder="Ваше имя"
+              value=""
+              minlength="5"
+              maxlength="20"
+              required = ""
+              type="text"
+              class="popup__input popup__input_form-name">
             <input
               type="text"
               placeholder="О вас"
               value=""
               minlength="5"
               maxlength="20"
-              class="popup__input popup__input_form_about">
+              required = ""
+              class="popup__input popup__input_form-about">
             <button type="submit" class="popup__button-submit">Сохранить</button>
           </form>
         </div>
       </div>
 
-
       <!-- форма добавления новых фото при нажатии на плюс -->
-      <div class="popup popup_place_pluse">
+      <div class="popup popup_type_card-add">
         <div class="popup__container">
-          <button type="button" class="popup__button-close popup__button-close_place_pluse"></button>
+          <button type="button" class="popup__button-close popup__button-close_add-card"></button>
           <h2 class="popup__title">Новое место</h2>
-          <form name="form_name" class="popup__form popup__form_place_pluse">
+          <form name="form_name" class="popup__form popup__form_card-add">
             <input
-            name="name"
-            placeholder="Название"
-            value=""
-            minlength="5"
-            maxlength="20"
-            type="text"
-            class="popup__input popup__input_form_img-name">
+              name="name"
+              placeholder="Название"
+              value=""
+              minlength="5"
+              maxlength="20"
+              required = ""
+              type="text"
+              class="popup__input popup__input_img-name">
             <input
               type="text"
               placeholder="Ссылка на картинку"
               value=""
               minlength="5"
-              maxlength="100"
-              class="popup__input popup__input_form_img-link">
-            <button type="submit" class="popup__button-submit popup__button-submit_place_pluse">Создать</button>
+              required = ""
+              class="popup__input popup__input_img-link">
+            <button type="submit" class="popup__button-submit popup__button-submit_add-card">Создать</button>
           </form>
         </div>
       </div>
@@ -165,7 +100,7 @@
       <!-- форма открытия большого изображения -->
       <div class="popup popup_type_img">
         <figure class="popup__container-img">
-          <button type="button" class="popup__button-close popup__button-close_place_big-img"></button>
+          <button type="button" class="popup__button-close popup__button-close_big-img"></button>
           <img src="#" alt="новое фото" class="popup__img">
           <figcaption class="popup__title-img">Название фото</figcaption>
         </figure>
