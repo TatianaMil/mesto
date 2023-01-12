@@ -1,11 +1,11 @@
 const profileButton = document.querySelector('.profile__button');
 const popup = document.querySelector('.popup');
 const popupClose = document.querySelector('.popup__button-close');
-let formElement = document.querySelector('.popup__form');
-let nameInput = document.querySelector('.popup__input_form-name');
-let aboutInput = document.querySelector('.popup__input_form-about');
-let profileTitle = document.querySelector('.profile__title');
-let profileInfo = document.querySelector('.profile__info');
+const formElement = document.querySelector('.popup__form');
+const nameInput = document.querySelector('.popup__input_form-name');
+const aboutInput = document.querySelector('.popup__input_form-about');
+const profileTitle = document.querySelector('.profile__title');
+const profileInfo = document.querySelector('.profile__info');
 
 //5sprint объявили переменные для добавления в кнопку плюс
 const buttonOpeneFormCard = document.querySelector('.profile__button-plus');
@@ -19,17 +19,70 @@ const popupButtonCloseAddCard = document.querySelector('.popup__button-close_add
 const popupFormPlacePluse = document.querySelector('.popup__form_card-add');
 const popupButtonClosePlaceImg = document.querySelector('.popup__button-close_big-img');
 
+//закрытие формы по esc
+function closePopupEscape(evt) {
+  if (evt.key === "Escape") {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  };
+};
+
+//общая функция для открытия всех попапов
+function openPopup(popupElement) {
+  popupElement.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEscape);
+};
+
+//общая ф-я закрытия попапа
+function closePopup(popupElement) {
+  popupElement.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEscape);
+};
 
 //открытие попапа для имени и about
-profileButton.addEventListener('click', function() {
-  popup.classList.add('popup_opened');
+profileButton.addEventListener('click', () => {
+  // popup.classList.add('popup_opened');
   nameInput.value = profileTitle.textContent;
   aboutInput.value = profileInfo.textContent;
+  openPopup(popup)
 });
 
-//закрытие попапа при клике на крестик (для всех попапов)
-popupClose.addEventListener('click', function() {
-  popup.classList.remove('popup_opened');
+//открытие попапа для ссылки и названия
+buttonOpeneFormCard.addEventListener('click', () => {
+  openPopup(popupAddCard)
+});
+
+//функция открытия большой картинки
+const openBigImg = (img, title) => {
+  popupImage.src = img;
+  popupImage.alt = title;
+  popupTitleImage.textContent = title;
+  openPopup(popupCardImage)
+};
+
+//закрытие попапа при клике на крестик для имени и о себе
+popupClose.addEventListener('click', () => {
+  closePopup(popup);
+});
+
+//закрытия попапа добавления карточки
+popupButtonCloseAddCard.addEventListener('click', () => {
+  closePopup(popupAddCard);
+});
+
+//закрытие попапа большой картинки
+popupButtonClosePlaceImg.addEventListener('click', () => {
+  closePopup(popupCardImage);
+});
+
+//закрытие формы по нажатию на фон
+const closePopupOverlay = Array.from(document.querySelectorAll('.popup'));
+
+closePopupOverlay.forEach(popup => {
+  popup.addEventListener('click', (evt) => {
+    if (evt.currentTarget === evt.target)
+    closePopup(popup);
+  });
 });
 
 //обработчик отправки формы
@@ -69,31 +122,9 @@ const initialCards = [
   }
 ];
 
-//открытие и закрытие попапа по нажатию на плюс
-buttonOpeneFormCard.addEventListener('click', () => {
-  popupAddCard.classList.add('popup_opened');
-});
-
-popupButtonCloseAddCard.addEventListener('click', () => {
-  popupAddCard.classList.remove('popup_opened');
-});
-
-//закрытие попапа большой картинки
-popupButtonClosePlaceImg.addEventListener('click', () => {
-  popupCardImage.classList.remove('popup_opened');
-});
-
 //добавление и удаление лайка
 const handleLikeClick = (evt) => {
   evt.target.classList.toggle('gallery__heart_active');
-};
-
-//функция открытия большой картинки
-const openBigImg = (img, title) => {
-  popupCardImage.classList.add('popup_opened');
-  popupImage.src = img;
-  popupImage.alt = title;
-  popupTitleImage.textContent = title;
 };
 
 // создание новой карточки
@@ -145,6 +176,3 @@ const addCardSubmit = (evt) => {
 }
 
 popupFormPlacePluse.addEventListener('submit', addCardSubmit);
-
-
-
