@@ -136,8 +136,10 @@ const createNewCard = (name, link) => {
   const newCard = template.content.querySelector('.gallery__item').cloneNode(true);
 
   newCard.querySelector('.gallery__title').textContent = name;
-  newCard.querySelector('.gallery__img').src = link;
-  newCard.querySelector('.gallery__img').alt = name;
+  const galleryImage = newCard.querySelector('.gallery__img');
+  galleryImage.src = link;
+  galleryImage.alt = name;
+
 
   //для добавления лайка
   newCard.querySelector('.gallery__heart').addEventListener('click', handleLikeClick);
@@ -149,7 +151,7 @@ const createNewCard = (name, link) => {
   });
 
   //большая картинка
-  newCard.querySelector('.gallery__img').addEventListener('click', () => {
+  galleryImage.addEventListener('click', () => {
     openBigImg(link, name);
   });
 
