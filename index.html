@@ -43,11 +43,11 @@
       </footer>
 
       <!-- форма для редактирования данных (имя, about) -->
-      <div class="popup">
+      <div class="popup popup_type_profile">
         <div class="popup__container">
-          <button type="button" class="popup__button-close"></button>
+          <button type="button" class="popup__button-close popup__button-close_profile"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form name="about-you" class="popup__form" novalidate>
+          <form name="about-you" class="popup__form popup__form_profile" novalidate>
 
             <input name="name" placeholder="Имя" value="" minlength="2" maxlength="40" required type="text" class="popup__input popup__input_form-name" id="username">
             <span class="username-error popup__input-error"></span>

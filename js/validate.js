@@ -12,12 +12,6 @@ const validationConfig = {
   errorClass: 'popup__input-error_visible' //показать ошибку при неверно заполненом поле
 };
 
-// const formElement = document.querySelector('.popup__form');
-const userNameInput = document.querySelector('#username');
-const aboutUserInput = document.querySelector('#about');
-const titleInput = document.querySelector('#title');
-const linkInput = document.querySelector('#link');
-
 enableValidation(validationConfig);
 
 //описание ф-и showInputError
@@ -69,7 +63,14 @@ function setEventListeners(formElement, config) {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));  //находим список инпутов формы
   const buttonElement = formElement.querySelector(config.submitButtonSelector); //находим кнопку формы
 
-  toggleButtonState(inputList, buttonElement, config);  //для неактивной кнопки без введенных данных
+  toggleButtonState(inputList, buttonElement, config);  //деактивация для первой загрузки
+
+  formElement.addEventListener('reset', () => {
+    // `setTimeout` нужен для того, чтобы дождаться очищения формы (вызов уйдет в конце стэка) и только потом вызвать `toggleButtonState`
+    setTimeout(() => {
+      toggleButtonState(inputList, buttonElement, config);
+    }, 0); // достаточно указать 0 миллисекунд, чтобы после `reset` уже сработало действие
+  });
 
   //проходимся по инпутам:
   inputList.forEach((inputElement) => {

@@ -1,7 +1,7 @@
 const profileButton = document.querySelector('.profile__button');
-const popup = document.querySelector('.popup');
-const popupClose = document.querySelector('.popup__button-close');
-const formElement = document.querySelector('.popup__form');
+const popupProfile = document.querySelector('.popup_type_profile');
+const popupButtonCloseProfile = document.querySelector('.popup__button-close_profile');
+const popupFormProfile = document.querySelector('.popup__form_profile');
 const nameInput = document.querySelector('.popup__input_form-name');
 const aboutInput = document.querySelector('.popup__input_form-about');
 const profileTitle = document.querySelector('.profile__title');
@@ -41,10 +41,9 @@ function closePopup(popupElement) {
 
 //открытие попапа для имени и about
 profileButton.addEventListener('click', () => {
-  // popup.classList.add('popup_opened');
   nameInput.value = profileTitle.textContent;
   aboutInput.value = profileInfo.textContent;
-  openPopup(popup)
+  openPopup(popupProfile)
 });
 
 //открытие попапа для ссылки и названия
@@ -61,8 +60,8 @@ const openBigImg = (img, title) => {
 };
 
 //закрытие попапа при клике на крестик для имени и о себе
-popupClose.addEventListener('click', () => {
-  closePopup(popup);
+popupButtonCloseProfile.addEventListener('click', () => {
+  closePopup(popupProfile);
 });
 
 //закрытия попапа добавления карточки
@@ -76,9 +75,9 @@ popupButtonClosePlaceImg.addEventListener('click', () => {
 });
 
 //закрытие формы по нажатию на фон
-const closePopupOverlay = Array.from(document.querySelectorAll('.popup'));
+const popups = Array.from(document.querySelectorAll('.popup'));
 
-closePopupOverlay.forEach(popup => {
+popups.forEach(popup => {
   popup.addEventListener('click', (evt) => {
     if (evt.currentTarget === evt.target)
     closePopup(popup);
@@ -86,14 +85,15 @@ closePopupOverlay.forEach(popup => {
 });
 
 //обработчик отправки формы
-const handleFormSubmit = (evt) => {
+const handleFormSubmitProfile = (evt) => {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileInfo.textContent = aboutInput.value;
-  popup.classList.remove('popup_opened');
+  // popupProfile.classList.remove('popup_opened');
+  closePopup(popupProfile);
 };
 
-formElement.addEventListener('submit', handleFormSubmit);
+popupFormProfile.addEventListener('submit', handleFormSubmitProfile);
 
 const initialCards = [
   {
@@ -167,12 +167,11 @@ initialCards.forEach ((element) => {
 });
 
 //добавление своей карточки в галерею
-const addCardSubmit = (evt) => {
+const handleCardSubmit = (evt) => {
   evt.preventDefault();
   renderCard(popupImageName.value, popupImageLink.value);
-  popupAddCard.classList.remove('popup__form_card-add');
-  popupAddCard.classList.remove('popup_opened');
+  closePopup(popupAddCard);
   popupFormPlacePluse.reset();
 }
 
-popupFormPlacePluse.addEventListener('submit', addCardSubmit);
+popupFormPlacePluse.addEventListener('submit', handleCardSubmit);
