@@ -32,7 +32,7 @@ function hideInputError(formElement, inputElement, config) {
   inputElement.classList.remove(config.inputErrorClass);  //удаляем класс с ошибкой у инпута
 };
 
-//описываем ф-ю checkedInputValidityюпроверяем валидность:
+//описываем ф-ю checkedInputValidity проверяем валидность:
 function checkedInputValidity(formElement, inputElement, config) {
   //проверяем есть ли у полей инпутов ошибки
   if(inputElement.validity.valid) {

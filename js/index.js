@@ -1,3 +1,5 @@
+import Card from './Card.js';
+
 const profileButton = document.querySelector('.profile__button');
 const popupProfile = document.querySelector('.popup_type_profile');
 const popupButtonCloseProfile = document.querySelector('.popup__button-close_profile');
@@ -52,9 +54,9 @@ buttonOpeneFormCard.addEventListener('click', () => {
 });
 
 //функция открытия большой картинки
-const openBigImg = (img, title) => {
-  popupImage.src = img;
+const openBigPopup = (title, img) => {
   popupImage.alt = title;
+  popupImage.src = img;
   popupTitleImage.textContent = title;
   openPopup(popupCardImage)
 };
@@ -89,7 +91,6 @@ const handleFormSubmitProfile = (evt) => {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileInfo.textContent = aboutInput.value;
-  // popupProfile.classList.remove('popup_opened');
   closePopup(popupProfile);
 };
 
@@ -122,56 +123,27 @@ const initialCards = [
   }
 ];
 
-//добавление и удаление лайка
-const handleLikeClick = (evt) => {
-  evt.target.classList.toggle('gallery__heart_active');
-};
-
-// создание новой карточки
 const galleryContainer = document.querySelector('.gallery');
-const template = document.querySelector('#template-new-img');
-
-//для открытия картинки
-const createNewCard = (name, link) => {
-  const newCard = template.content.querySelector('.gallery__item').cloneNode(true);
-
-  newCard.querySelector('.gallery__title').textContent = name;
-  const galleryImage = newCard.querySelector('.gallery__img');
-  galleryImage.src = link;
-  galleryImage.alt = name;
-
-
-  //для добавления лайка
-  newCard.querySelector('.gallery__heart').addEventListener('click', handleLikeClick);
-
-  //для удаления карточки по нажатию на корзину
-  const deleteCardButton = newCard.querySelector('.gallery__del');
-  deleteCardButton.addEventListener('click', () => {
-    newCard.remove();
-  });
-
-  //большая картинка
-  galleryImage.addEventListener('click', () => {
-    openBigImg(link, name);
-  });
-
-  return newCard;
-};
 
 //добавление карточки
-const renderCard = (name, link) => {
-  galleryContainer.prepend(createNewCard(name, link));
-};
+const renderCard = (element) =>  {
+  galleryContainer.prepend(createCard(element))
+}
+
+const createCard = (element) => {
+  const card = new Card(element, '#template-new-img', openBigPopup)
+return card.getView()
+}
 
 // вставляем карточки из массива
 initialCards.forEach ((element) => {
-  renderCard(element.name, element.link);
+  renderCard(element);
 });
 
 //добавление своей карточки в галерею
 const handleCardSubmit = (evt) => {
   evt.preventDefault();
-  renderCard(popupImageName.value, popupImageLink.value);
+  renderCard({name: popupImageName.value, link: popupImageLink.value});
   closePopup(popupAddCard);
   popupFormPlacePluse.reset();
 }
