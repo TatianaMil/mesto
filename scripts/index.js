@@ -43,11 +43,13 @@ function closePopup(popupElement) {
 };
 
 //открытие попапа для имени и about
-profileButton.addEventListener('click', () => {
+const openPopupAbout = () => {
   nameInput.value = profileTitle.textContent;
   aboutInput.value = profileInfo.textContent;
+  formValidatorProfile.resetValidation()
   openPopup(popupProfile)
-});
+}
+profileButton.addEventListener('click', openPopupAbout);
 
 //открытие попапа для ссылки и названия
 buttonOpeneFormCard.addEventListener('click', () => {
@@ -147,6 +149,7 @@ const handleCardSubmit = (evt) => {
   renderCard({name: popupImageName.value, link: popupImageLink.value});
   closePopup(popupAddCard);
   popupFormPlacePluse.reset();
+  formValidatorAddImage.disableSubmitButton()
 }
 
 popupFormPlacePluse.addEventListener('submit', handleCardSubmit);
@@ -160,11 +163,10 @@ const validationConfig = {
   errorClass: 'popup__input-error_visible' //показать ошибку при неверно заполненом поле
 };
 
+const formValidatorProfile = new FormValidator(validationConfig, popupProfile); //для вызова валидации профиля
+const formValidatorAddImage = new FormValidator(validationConfig, popupAddCard); //для вызова валидации картинки
 
 // вызываем валидацию попапа профиля
-const formValidatorProfile = new FormValidator(validationConfig, popupProfile);
 formValidatorProfile.enableValidation();
-
 //вызываем валидацию попапа добавления картинки
-const formValidatorAddImage = new FormValidator(validationConfig, popupAddCard);
 formValidatorAddImage.enableValidation();
