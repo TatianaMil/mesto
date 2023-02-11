@@ -1,4 +1,5 @@
-import Card from './Card.js';
+import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js'
 
 const profileButton = document.querySelector('.profile__button');
 const popupProfile = document.querySelector('.popup_type_profile');
@@ -149,3 +150,21 @@ const handleCardSubmit = (evt) => {
 }
 
 popupFormPlacePluse.addEventListener('submit', handleCardSubmit);
+
+const validationConfig = {
+  formSelector: '.popup__form', //форма
+  inputSelector: '.popup__input', //инпут
+  submitButtonSelector: '.popup__button-submit', //кнопка
+  inactiveButtonClass: 'popup__button-submit_invalid', //неактивная кнопка
+  inputErrorClass: 'popup__input_type_error', //подчеркивание красным при ошибке
+  errorClass: 'popup__input-error_visible' //показать ошибку при неверно заполненом поле
+};
+
+
+// вызываем валидацию попапа профиля
+const formValidatorProfile = new FormValidator(validationConfig, popupProfile);
+formValidatorProfile.enableValidation();
+
+//вызываем валидацию попапа добавления картинки
+const formValidatorAddImage = new FormValidator(validationConfig, popupAddCard);
+formValidatorAddImage.enableValidation();

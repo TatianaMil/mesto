@@ -1,4 +1,4 @@
-class Card {
+export class Card {
   constructor(data, templateSelector, openBigImage) {
     this._name = data.name;
     this._link = data.link;
@@ -59,19 +59,14 @@ class Card {
 
     //like
     this._likeButton = this._newCard.querySelector('.gallery__heart');
-
          //big img
     this._cardImage = this._newCard.querySelector('.gallery__img');
-
     this._deleteButton = this._newCard.querySelector('.gallery__del');
 
     this._setData(); //объявляем заголовок
     this._setEventListeners(); //обработчики событий
 
-
-
-
-     return this._newCard;
+    return this._newCard;
   }
 }
-export default Card;
+// export default Card;
