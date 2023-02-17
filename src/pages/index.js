@@ -1,6 +1,11 @@
 import {Card} from '../components/Card.js';
-import {FormValidator} from '../components/FormValidator.js'
-import './index.css'
+import {FormValidator} from '../components/FormValidator.js';
+import './index.css';
+import {
+  initialCards,
+  validationConfig
+} from '../utils/constants.js'
+import {Section} from '../components/Section.js'
 
 const profileButton = document.querySelector('.profile__button');
 const popupProfile = document.querySelector('.popup_type_profile');
@@ -22,6 +27,7 @@ const popupAddCard = document.querySelector('.popup_type_card-add');
 const popupButtonCloseAddCard = document.querySelector('.popup__button-close_add-card');
 const popupFormPlacePluse = document.querySelector('.popup__form_card-add');
 const popupButtonClosePlaceImg = document.querySelector('.popup__button-close_big-img');
+const galleryContainer = document.querySelector('.gallery');
 
 //закрытие формы по esc
 function closePopupEscape(evt) {
@@ -58,9 +64,9 @@ buttonOpeneFormCard.addEventListener('click', () => {
 });
 
 //функция открытия большой картинки
-const openBigPopup = (title, img) => {
+const openBigPopup = (title, link) => {
   popupImage.alt = title;
-  popupImage.src = img;
+  popupImage.src = link;
   popupTitleImage.textContent = title;
   openPopup(popupCardImage)
 };
@@ -100,49 +106,35 @@ const handleFormSubmitProfile = (evt) => {
 
 popupFormProfile.addEventListener('submit', handleFormSubmitProfile);
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-const galleryContainer = document.querySelector('.gallery');
-
-//добавление карточки
-const renderCard = (element) =>  {
-  galleryContainer.prepend(createCard(element))
-}
-
+//создание карточки
 const createCard = (element) => {
   const card = new Card(element, '#template-new-img', openBigPopup)
 return card.getView()
-}
+};
+
+//подключаем класс section, отрисовка всех элементов
+const cardSection = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      cardSection.addItem(createCard(item));
+    },
+  },
+  galleryContainer
+);
+cardSection.renderItems();
+
+//добавление карточки
+const renderCard = (element) => {
+  galleryContainer.prepend(createCard(element))
+};
 
 // вставляем карточки из массива
-initialCards.forEach ((element) => {
-  renderCard(element);
-});
+// initialCards.forEach ((element) => {
+//   renderCard(element);
+// });
+
+
 
 //добавление своей карточки в галерею
 const handleCardSubmit = (evt) => {
@@ -151,18 +143,9 @@ const handleCardSubmit = (evt) => {
   closePopup(popupAddCard);
   popupFormPlacePluse.reset();
   formValidatorAddImage.disableSubmitButton()
-}
+};
 
 popupFormPlacePluse.addEventListener('submit', handleCardSubmit);
-
-const validationConfig = {
-  formSelector: '.popup__form', //форма
-  inputSelector: '.popup__input', //инпут
-  submitButtonSelector: '.popup__button-submit', //кнопка
-  inactiveButtonClass: 'popup__button-submit_invalid', //неактивная кнопка
-  inputErrorClass: 'popup__input_type_error', //подчеркивание красным при ошибке
-  errorClass: 'popup__input-error_visible' //показать ошибку при неверно заполненом поле
-};
 
 const formValidatorProfile = new FormValidator(validationConfig, popupProfile); //для вызова валидации профиля
 const formValidatorAddImage = new FormValidator(validationConfig, popupAddCard); //для вызова валидации картинки
