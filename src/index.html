@@ -47,12 +47,12 @@
         <div class="popup__container">
           <button type="button" class="popup__button-close popup__button-close_profile"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form name="about-you" class="popup__form popup__form_profile" novalidate>
+          <form name="about" class="popup__form popup__form_profile" novalidate>
 
             <input name="name" placeholder="Имя" value="" minlength="2" maxlength="40" required type="text" class="popup__input popup__input_form-name" id="username">
             <span class="username-error popup__input-error"></span>
 
-            <input type="text" placeholder="О себе" value="" minlength="2" maxlength="200" required class="popup__input popup__input_form-about" id="about">
+            <input name="about" type="text" placeholder="О себе" value="" minlength="2" maxlength="200" required class="popup__input popup__input_form-about" id="about">
             <span class="about-error popup__input-error"></span>
 
             <button type="submit" class="popup__button-submit">Сохранить</button>
@@ -70,7 +70,7 @@
             <input type="text" name="name" placeholder="Название" value="" required class="popup__input popup__input_img-name" id="title" minlength="2" maxlength="30">
             <span class="title-error popup__input-error"></span>
 
-            <input type="url" placeholder="Ссылка на картинку" value="" required class="popup__input popup__input_img-link" id="link">
+            <input name="link" type="url" placeholder="Ссылка на картинку" value="" required class="popup__input popup__input_img-link" id="link">
             <span class="link-error popup__input-error"></span>
 
             <button type="submit" class="popup__button-submit popup__button-submit_add-card popup__button-submit_save">Создать</button>
@@ -91,7 +91,7 @@
   </div>
 
 <!-- добавление новых картинок -->
-  <template id="template-new-img">
+  <template class='template-new-img' id="template-new-img">
     <article class="gallery__item">
       <div class="gallery__img-block">
         <img src="#" alt="новое фото" class="gallery__img">

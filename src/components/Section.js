@@ -6,7 +6,6 @@ export class Section {
     this._containerSelector = containerSelector; //селектор контейнера, в который нужно добавлять созданные элементы
   };
 
-
   renderItems() {
     this._items.forEach((item) => {
       this._renderer(item);

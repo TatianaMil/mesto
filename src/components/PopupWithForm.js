@@ -4,8 +4,8 @@ export class PopupWithForm extends Popup {
   constructor(popupSelector, callbackSubmit) {
     super(popupSelector); //селектор попапа
     this._callbackSubmit = callbackSubmit; //колбэк сабмита формы
-    this._form = this._popup.querySelector('.popup_type_profile') //находим форму
-    this._inputElements = [...this._form.querySelector('.popup__input')];
+    this._form = this._popup.querySelector('.popup__form'); //находим форму
+    this._inputElements = this._form.querySelectorAll('.popup__input');
   };
 
   //_getInputValues собирает данные всех полей формы
@@ -22,7 +22,7 @@ export class PopupWithForm extends Popup {
     super.setEventListeners();
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._callbackSubmit(this._getInputValues);
+      this._callbackSubmit(this._getInputValues());
     });
   };
 
@@ -32,6 +32,3 @@ export class PopupWithForm extends Popup {
     this._form.reset();
   };
 };
-
-//popup_type_profile класс попап формы
-// popup__input класс импутов формы

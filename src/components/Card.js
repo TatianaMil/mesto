@@ -1,14 +1,12 @@
-// Свяжите класс Card c попапом. Сделайте так, чтобы Card принимал в конструктор функцию handleCardClick. Эта функция должна открывать попап с картинкой при клике на карточку.
-
 export class Card {
-  constructor(data, templateSelector, openBigImage) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-    this._openBigImage = openBigImage;
-  }
+    this._handleCardClick = handleCardClick;
+  };
 
-//объявили метод, получения карточки
+  //объявили метод, получения карточки
   _getTemplate() {
     const cardElement = document
     .querySelector(this._templateSelector)
@@ -17,25 +15,25 @@ export class Card {
     .cloneNode(true);
 
     return cardElement;
-  }
+  };
 
   // передаем данные карточки
   _setData() {
     this._newCard.querySelector('.gallery__title').textContent = this._name;
     this._newCard.querySelector('.gallery__img').src = this._link;
     this._newCard.querySelector('.gallery__img').alt = this._name;
-  }
+  };
 
   //удаляем карточку
   _deleteCardButton() {
     this._newCard.remove();
     this._newCard = null;
-  }
+  };
 
   //ставим лайк
   _handleLikeClick(evt) {
     evt.target.classList.toggle('gallery__heart_active');
-  }
+  };
 
   _setEventListeners() {
     // вешаем обработчик на кнопку корзины
@@ -52,7 +50,7 @@ export class Card {
 
     //большая картинка
     this._cardImage.addEventListener('click', () => {
-      this._openBigImage(this._name, this._link)
+      this._handleCardClick(this._name, this._link)
     });
   };
 
@@ -69,5 +67,5 @@ export class Card {
     this._setEventListeners(); //обработчики событий
 
     return this._newCard;
-  }
-}
+  };
+};

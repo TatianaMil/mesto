@@ -21,7 +21,7 @@ export class FormValidator {
     errorElement.classList.add(this._errorClass);
   };
 
-//hide an error
+  //hide an error
   _hideInputError = (input) => {
     const errorElement = this._form.querySelector(`.${input.id}-error`);
     input.classList.remove(this._inputErrorClass);
@@ -29,7 +29,7 @@ export class FormValidator {
     errorElement.classList.remove(this._errorClass);
   };
 
-//проверяем валидность
+  //проверяем валидность
   _checkInputValidity = (input) => {
     if(!input.validity.valid) {
       this._showInputError(input, input.validationMessage);
@@ -38,34 +38,33 @@ export class FormValidator {
     };
   };
 
-//проходимся по всем инпутам и проверяем их валидность
+  //проходимся по всем инпутам и проверяем их валидность
   _hasInvalidInput() {
     return this._inputElement.some((input) => {
       return !input.validity.valid
     });
   };
 
-
   disableSubmitButton() {
     this._button.classList.add(this._inactiveButtonClass)
     this._button.disabled = true
-  }
+  };
 
   _enableSubmitButton() {
     this._button.classList.remove(this._inactiveButtonClass)
     this._button.disabled = false;
-  }
+  };
 
   //функция для кнопки сохранения
-_toggleButtonState = () => {
-  if(this._hasInvalidInput()) {
-    this.disableSubmitButton()
-  } else {
-    this._enableSubmitButton()
+  _toggleButtonState = () => {
+    if(this._hasInvalidInput()) {
+      this.disableSubmitButton()
+    } else {
+      this._enableSubmitButton()
+    };
   };
-};
 
-//добавляем слушателя
+  //добавляем слушателя
   _setEventListeners = () => {
     this._toggleButtonState();
 
@@ -87,5 +86,5 @@ _toggleButtonState = () => {
 
   enableValidation() {
     this._setEventListeners()
-    };
   };
+};
