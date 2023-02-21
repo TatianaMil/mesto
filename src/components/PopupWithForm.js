@@ -10,7 +10,8 @@ export class PopupWithForm extends Popup {
 
   //_getInputValues собирает данные всех полей формы
   _getInputValues() {
-    const values = {};
+    const values = {}; //создаем пустой объект
+    //добавляем значение всех полей
     this._inputElements.forEach((input) => {
       values[input.name] = input.value
     });

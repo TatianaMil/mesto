@@ -20,7 +20,8 @@ export class Card {
   // передаем данные карточки
   _setData() {
     this._newCard.querySelector('.gallery__title').textContent = this._name;
-    this._newCard.querySelector('.gallery__img').src = this._link;
+    // this._newCard.querySelector('.gallery__img').src = this._link;
+    this._cardImage.src = this._link;
     this._newCard.querySelector('.gallery__img').alt = this._name;
   };
 

@@ -77,12 +77,12 @@ export class FormValidator {
   };
 
   //валидация формы
-  resetValidation() {
-    this._toggleButtonState()
-    this._inputElement.forEach((input) => {
-      this._hideInputError(input);
-    });
-  };
+  // resetValidation() {
+  //   this._toggleButtonState()
+  //   this._inputElement.forEach((input) => {
+  //     this._hideInputError(input);
+  //   });
+  // };
 
   enableValidation() {
     this._setEventListeners()
