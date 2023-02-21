@@ -76,6 +76,11 @@ export class FormValidator {
     });
   };
 
+  enableValidation() {
+    this._setEventListeners()
+  };
+};
+
   //валидация формы
   // resetValidation() {
   //   this._toggleButtonState()
@@ -83,8 +88,3 @@ export class FormValidator {
   //     this._hideInputError(input);
   //   });
   // };
-
-  enableValidation() {
-    this._setEventListeners()
-  };
-};
