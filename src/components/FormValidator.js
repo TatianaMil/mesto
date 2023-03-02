@@ -80,11 +80,3 @@ export class FormValidator {
     this._setEventListeners()
   };
 };
-
-  //валидация формы
-  // resetValidation() {
-  //   this._toggleButtonState()
-  //   this._inputElement.forEach((input) => {
-  //     this._hideInputError(input);
-  //   });
-  // };

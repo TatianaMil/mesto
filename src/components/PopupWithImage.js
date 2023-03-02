@@ -9,10 +9,10 @@ export class PopupWithImage extends Popup {
   };
 
 //перезаписываем родительский метод
-  open(title, link) {
-    this._popupImageTitle.textContent = title; //вставляем название картинки
+  open(name, link) {
+    this._popupImageTitle.textContent = name; //вставляем название картинки
     this._popupImage.src = link; //вставляем ссылку на картинку
-    this._popupImage.alt = title; // вставляем текст, если картинка не загрузилась
+    this._popupImage.alt = name; // вставляем текст, если картинка не загрузилась
     super.open();
   };
 };

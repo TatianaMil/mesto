@@ -7,6 +7,7 @@ export class Popup {
 
   //открытие попапа
   open() {
+    this.setEventListeners()
     this._popup.classList.add('popup_opened'); //добавляем открытие попапа
     document.addEventListener('keydown', this._handleEscClose);
   };
@@ -38,5 +39,3 @@ export class Popup {
     });
   };
 };
-
-//.popup__button-close - кнопка закрытия попапа

@@ -1,20 +1,41 @@
 export class UserInfo {
-  constructor({titleElement, infoElement}) {
-  this._titleElement = document.querySelector(titleElement); //элемент имени пользователя
-  this._infoElement = document.querySelector(infoElement); //элемент информации о себе
-  };
+  constructor({ name, about, avatar }) {
+    this._data = {
+      name: name.textContent, //элемент имени пользователя
+      about: about.textContent, //элемент информации о себе
+      avatar: avatar.textContent, //avatar element
+    };
+    this._name = name;
+    this._about = about;
+    this._avatar = avatar;
+  }
 
-  //возвращает объект с данными пользователя. Этот метод пригодится когда данные пользователя нужно будет подставить в форму при открытии.
+  //возвращает объект с данными пользователя.
   getUserInfo() {
     return {
-      title: this._titleElement.textContent,
-      info: this._infoElement.textContent
+      name: this._data.name,
+      about: this._data.about,
+      avatar: this._data.avatar,
     };
   };
 
-  //принимает новые данные пользователя и добавляет их на страницу
-  setUserInfo(title, info) {
-    this._titleElement.textContent = title; //добавляет имя
-    this._infoElement.textContent = info; // добавляет информацию о себе
+  //собираем информацию о пользователе
+  setUserInfo(data) {
+    this._data.name = data.name;
+    this._data.about = data.about;
+    this._data.avatar = data.avatar;
+    if (data.name) {
+      this._name.textContent = this._data.name;
+    }
+
+    if (data.about) {
+      this._about.textContent = this._data.about;
+    }
+
+    //добавляем аватар
+    if (data.avatar) {
+      this._avatar.src = this._data.avatar;
+      this._avatar.alt = this._data.name;
+    }
   };
 };
