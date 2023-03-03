@@ -6,14 +6,18 @@ export class PopupWithConfirmation extends Popup {
     super(popup);
     this._handleSubmit = handleSubmit;
     this._form = this._popup.querySelector(".popup__form");
-    this._form.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      this._handleSubmit(this._card);
-    });
   }
 
   open(card) {
     this._card = card;
     super.open();
   }
-}
+
+  setEventListeners() {
+    super.setEventListeners()  // <=== вот это запускает родительские обработчики
+    this._form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      this._handleSubmit(this._card);
+    });
+  }
+};

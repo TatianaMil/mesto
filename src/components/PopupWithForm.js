@@ -1,14 +1,17 @@
-import { Popup } from "./Popup";
+import { Popup } from './Popup';
 
 export class PopupWithForm extends Popup {
   constructor(popupSelector, callbackSubmit) {
     super(popupSelector); //наследуем класс попапа
     this._callbackSubmit = callbackSubmit; //колбэк сабмита формы
 
-    this._form = this._popup.querySelector(".popup__form"); //находим форму
-    this._inputElements = this._form.querySelectorAll(".popup__input"); //находим поля импутов
-    this._button = this._form.querySelector("popup__button-submit"); //находим кномку сохранения попапа
+    this._form = this._popup.querySelector('.popup__form'); //находим форму
+    this._inputElements = this._form.querySelectorAll('.popup__input'); //находим поля импутов
+    this._button = this._form.querySelector('.popup__button-submit'); //находим кномку сохранения попапа
+  }
 
+  setEventListeners() {
+    super.setEventListeners()  // <=== вот это запускает родительские обработчики
     this._form.addEventListener("submit", (event) => {
       event.preventDefault();
       const replacementText = event.submitter.textContent;
@@ -42,9 +45,5 @@ export class PopupWithForm extends Popup {
   close() {
     super.close();
     this._form.reset();
-  }
-
-  chengedButtonText(text) {
-    this._button.textContent = text;
   }
 }

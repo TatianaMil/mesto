@@ -1,13 +1,12 @@
 export class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector); //селектор попапа, находит попап
-    this._popupCloseButton = this._popup.querySelector('.popup__button-close') //находим кнопку закрытия попапа
     this._handleEscClose = this._handleEscClose.bind(this);
   }
 
   //открытие попапа
   open() {
-    this.setEventListeners()
+    // this.setEventListeners()
     this._popup.classList.add('popup_opened'); //добавляем открытие попапа
     document.addEventListener('keydown', this._handleEscClose);
   };
@@ -20,22 +19,24 @@ export class Popup {
 
   //логика закрытия попапа клавишей Esc
   _handleEscClose(evt) {
-    //проверяем нажатие esc
-    if (evt.key === 'Escape') {
-      this.close(); //закрываем по нажатию на esc
+    if (evt.key === "Escape") {
+      const isNotCombinedKey = !(evt.ctrlKey || evt.altKey || evt.shiftKey);
+      if (isNotCombinedKey && this._popup.classList.contains("popup_opened")) {
+        this.close();
+      }
     }
-  };
+  }
 
   setEventListeners() {
-    //добавляет слушатель клика иконке закрытия попапа
-    this._popupCloseButton.addEventListener('click', () => {
-      this.close();
-    });
-    //закрытие при клике на затемнённую область вокруг формы
-    this._popup.addEventListener('mousedown', (evt) => {
-      if (evt.target === evt.currentTarget) {
+    this._popup.addEventListener("mousedown", (e) => {
+      if (e.target.classList.contains("popup__button-close")) {
         this.close();
-      };
+      }
+      // Модальное окно также закрывается при клике
+      // на затемнённую область вокруг формы.
+      if (e.target.classList.contains("popup_opened")) {
+        this.close();
+      }
     });
-  };
+  }
 };

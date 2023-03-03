@@ -32,11 +32,11 @@ export class Card {
   }
 
   //counter likes
-  likesCount(res) {
-    this._likesCount.textContent = `${res.likes.length}`;
+  setLikesCount(res) {
+    this._setLikesCount.textContent = `${res.likes.length}`;
   }
 
-  _userLiked() {
+  _checkLIikes() {
     this._likes.forEach((elementId) => {
       if (elementId._id === this._userId) {
         this.like();
@@ -80,8 +80,8 @@ export class Card {
     this._likeButton = this._cardElement.querySelector('.gallery__like');
 
     // counter likes
-    this._likesCount = this._cardElement.querySelector('.gallery__count-like');
-    this._likesCount.textContent = this._likes.length;
+    this._setLikesCount = this._cardElement.querySelector('.gallery__count-like');
+    this._setLikesCount.textContent = this._likes.length;
     this._deleteButtonTrash = this._cardElement.querySelector('.gallery__del');
     if (this._ownerId !== this._userId) {
       this._deleteButtonTrash.remove();
@@ -93,7 +93,7 @@ export class Card {
     this._cardElement.querySelector('.gallery__title').textContent = this._name;
 
     this._setEventListeners();
-    this._userLiked();
+    this._checkLIikes();
 
     return this._cardElement;
   };

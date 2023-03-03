@@ -3,16 +3,11 @@ import "./index.css";
 //импорт констант
 import {
   validationConfig,
-  // galleryContainer,
-  // aboutInput,
-  // nameInput,
   profileButton,
   popupConfig,
   buttonOpeneFormCard,
   profileEditAvatarButton,
-  // popupFormProfile,
-  // popupFormPlacePluse,
-  // popupFormAvatar,
+
   profileTitle,
   profileInfo,
   profileAvatar,
@@ -29,7 +24,7 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
 import { UserInfo } from "../components/UserInfo.js";
-import Api from "../utils/Api.js";
+import Api from "../components/Api.js";
 
 let userId; //variable for user
 
@@ -52,7 +47,7 @@ function createCard(data) {
       try {
         const response = await api.addLike(data._id);
         card.like();
-        card.likesCount(response);
+        card.setLikesCount(response);
       } catch (error) {
         return console.log(`Ошибка: ${error}`);
       }
@@ -61,7 +56,7 @@ function createCard(data) {
       try {
         const response = await api.removeLike(data._id);
         card.dislike();
-        card.likesCount(response);
+        card.setLikesCount(response);
       } catch (error) {
         return console.log(`Ошибка: ${error}`);
       }
@@ -119,6 +114,7 @@ const user = new UserInfo({
   avatar: profileAvatar,
 });
 
+
 profileButton.addEventListener(
   "click",
   () => {
@@ -171,6 +167,12 @@ const popupConfirmation = new PopupWithConfirmation(
       .catch((error) => console.log(`Ошибка: ${error}`));
   }
 );
+
+popupConfirmation.setEventListeners();
+popupAdd.setEventListeners();
+popupEdit.setEventListeners();
+popupAvatar.setEventListeners();
+popupImage.setEventListeners();
 
 // Загрузка карточек с сервера
 const cardList = new Section(
