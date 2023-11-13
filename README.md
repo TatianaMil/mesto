@@ -11,3 +11,5 @@
 
 
 * [Ссылка на проект](https://tatianamil.github.io/mesto/)
+
+Проект завершен
